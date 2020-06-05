@@ -17,7 +17,7 @@ options := &logger.Options{
     MaxAge:         time.Duration(7*24) * time.Hour,
     RotationTime:   time.Duration(7) * time.Hour,
 }
-log := GetLoggerWithOptions("default", options)
+log := logger.GetLoggerWithOptions("default", options)
 log.Info("Hello world")
 ```
   
