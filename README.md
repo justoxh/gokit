@@ -5,7 +5,7 @@
 ```
 go get github.com/justoxh/gokit/logger
 ```
-### usege
+### usage
   
 ```
 options := &logger.Options{
@@ -21,5 +21,33 @@ log := logger.GetLoggerWithOptions("default", options)
 log.Info("Hello world")
 ```
   
+  
+## rabbitmq
+
+### install 
+
+```
+go get github.com/justoxh/gokit/rabbitmq
+```
+
+### usage
+
+```go
+cfg := &rabbitmq.Config{
+    Username: "guest",
+    Password: "guest",
+    Host:     "127.0.0.1",
+    Port:     5672,
+}
+uri := rabbitmq.MakeURI(cfg)
+
+declarer, _ := rabbitmq.NewDeclarer(uri)
+
+publisher, _ := rabbitmq.NewPublisher(uri)
+
+consumer, err := rabbitmq.NewConsumer(uri, queue, "", 0, worker)
+
+```
+
 
 
