@@ -45,7 +45,7 @@ declarer, _ := rabbitmq.NewDeclarer(uri)
 
 publisher, _ := rabbitmq.NewPublisher(uri)
 
-consumer, err := rabbitmq.NewConsumer(uri, queue, "", 0, worker)
+consumer, _ := rabbitmq.NewConsumer(uri, queue, "", 0, worker)
 
 ```
 
