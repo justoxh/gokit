@@ -8,7 +8,7 @@ go get github.com/justoxh/gokit/logger
 ### usage
   
 ```
-options := &logger.Options{
+cfg := &logger.Options{
     Formatter:      "json",
     Write:          false,
     Path:           "./logs/",
@@ -17,7 +17,7 @@ options := &logger.Options{
     MaxAge:         time.Duration(7*24) * time.Hour,
     RotationTime:   time.Duration(7) * time.Hour,
 }
-log := logger.GetLoggerWithOptions("default", options)
+log := logger.GetLoggerWithOptions("default", cfg)
 log.Info("Hello world")
 ```
   
