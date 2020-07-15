@@ -49,5 +49,24 @@ consumer, _ := rabbitmq.NewConsumer(uri, queue, "", 0, worker)
 
 ```
 
+### invite code
+
+```
+go get github.com/justoxh/gokit/utils
+```
+
+### usage
+
+```
+ var id int64
+ id = 10000
+ code := utils.GenInviteCode(id)
+
+ // check
+
+ id,err := utils.DecodeInviteCode(code)
+
+```
+
 
 

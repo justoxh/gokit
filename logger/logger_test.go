@@ -25,7 +25,7 @@ func TestGetLoggerWithOptions(t *testing.T) {
 }
 
 type Item struct {
-	gorm.Model
+	SumNum int64 `json:"sum_num"`
 }
 
 func TestGetGormLoggerWithOptions(t *testing.T) {
@@ -43,7 +43,7 @@ func TestGetGormLoggerWithOptions(t *testing.T) {
 	var err error
 
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True",
-		"root","","localhost",3306,"learn")
+		"root","Cocos!@#$5678","localhost",3306,"learn")
 	db, err := gorm.Open("mysql", dataSourceName)
 	if err != nil {
 		t.Fatal(err)
@@ -53,7 +53,9 @@ func TestGetGormLoggerWithOptions(t *testing.T) {
 	db.LogMode(true)
 	db.Exec("USE learn")
 	// Migration to create tables for Order and Item schema
-	db.AutoMigrate(&Item{})
-	var items []Item
-	db.Find(&items)
+	//db.AutoMigrate(&Item{})
+	var item Item
+	sql := "select name as sum_num from items where id = 1"
+	db.Raw(sql).Scan(&item)
+	t.Log(10-item.SumNum)
 }
