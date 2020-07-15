@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	PRIME1    int64 = 7
-	PRIME2          = 11
+	PRIME1    int64 = 11
+	PRIME2          = 7
 	codeLen         = 6
 	SLAT      int64 = 20200810
 	sourceLen int64 = 32
