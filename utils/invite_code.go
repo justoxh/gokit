@@ -1,6 +1,7 @@
 package utils
 
 // 通过用户ID生成6位随机邀请码
+// 还有问题
 
 import (
 	"errors"
@@ -22,7 +23,7 @@ var (
 
 // 用户ID生成邀请码
 func GenInviteCode(uid int64) string {
-	id := uid*PRIME1 + SLAT
+	id := uid + SLAT
 	sourceCode := make([]int64, codeLen)
 	sourceCodeTmp := make([]int64, codeLen)
 	sourceCode[0] = id
@@ -72,7 +73,7 @@ func DecodeInviteCode(code string) (int64, error) {
 			res *= int64(1)
 		}
 	}
-	return (res - SLAT) / PRIME1, nil
+	return res - SLAT, nil
 }
 
 func findCharIndex(c string) int {
