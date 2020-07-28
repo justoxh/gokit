@@ -14,7 +14,7 @@ import (
 
 const (
 	defaultLevel       = "debug"
-	defaultLogFileName = "daily.log"
+	defaultLogFileName = "daily"
 )
 
 var (
@@ -118,7 +118,7 @@ func GetLoggerWithOptions(logName string, options *Options) *logrus.Logger {
 		}
 		path := filepath.Join(storeLogDir, logFileName)
 		writer, err := rotatelogs.New(
-			path+".%Y-%m-%d",
+			path+".%Y-%m-%d"+".log",
 			rotatelogs.WithClock(rotatelogs.Local),
 			rotatelogs.WithMaxAge(time.Duration(maxAge)*time.Hour),
 			rotatelogs.WithRotationCount(rotationCount),
@@ -135,6 +135,7 @@ func GetLoggerWithOptions(logName string, options *Options) *logrus.Logger {
 		} else {
 			formatter = &logrus.TextFormatter{}
 		}
+		log.SetFormatter(formatter)
 		if options.Debug {
 			log.AddHook(lfshook.NewHook(
 				lfshook.WriterMap{
