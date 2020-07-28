@@ -118,7 +118,7 @@ func GetLoggerWithOptions(logName string, options *Options) *logrus.Logger {
 		}
 		path := filepath.Join(storeLogDir, logFileName)
 		writer, err := rotatelogs.New(
-			path+".%Y-%m-%d"+".log",
+			path+"-%Y-%m-%d.log",
 			rotatelogs.WithClock(rotatelogs.Local),
 			rotatelogs.WithMaxAge(time.Duration(maxAge)*time.Hour),
 			rotatelogs.WithRotationCount(rotationCount),

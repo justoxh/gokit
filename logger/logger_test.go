@@ -14,7 +14,7 @@ func TestGetLoggerWithOptions(t *testing.T) {
 	options := &Options{
 		Formatter:      "json",
 		Write:          true,
-		Path:           "./logs/",
+		Path:           "../logs/",
 		DisableConsole: false,
 		WithCallerHook: true,
 		MaxAge:         time.Duration(7*24) * time.Hour,
