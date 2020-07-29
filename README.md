@@ -15,7 +15,7 @@ cfg := &logger.Options{
     DisableConsole: false,
     WithCallerHook: true,
     MaxAge:         time.Duration(7*24) * time.Hour,
-    RotationTime:   time.Duration(7) * time.Hour,
+    RotationTime:   time.Duration(24) * time.Hour,
 }
 log := logger.GetLoggerWithOptions("default", cfg)
 log.Info("Hello world")

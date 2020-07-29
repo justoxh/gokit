@@ -118,11 +118,11 @@ func GetLoggerWithOptions(logName string, options *Options) *logrus.Logger {
 		}
 		path := filepath.Join(storeLogDir, logFileName)
 		writer, err := rotatelogs.New(
-			path+"-%Y-%m-%d.log",
+			path+".%Y-%m-%d.log",
 			rotatelogs.WithClock(rotatelogs.Local),
-			rotatelogs.WithMaxAge(time.Duration(maxAge)*time.Hour),
+			rotatelogs.WithMaxAge(maxAge),
 			rotatelogs.WithRotationCount(rotationCount),
-			rotatelogs.WithRotationTime(time.Duration(rotationTime)*time.Hour),
+			rotatelogs.WithRotationTime(rotationTime),
 		)
 		if err != nil {
 			panic(fmt.Sprintf("rotatelogs log failed: %s", err.Error()))
